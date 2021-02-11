@@ -12,7 +12,7 @@ function useKey(key = [], cb) {
   
       document.addEventListener("keydown", handle);
       return () => document.removeEventListener("keydown", handle);
-    }, [key]);
+    }, []);
 }
 
 export default useKey;

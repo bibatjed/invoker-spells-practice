@@ -1,7 +1,11 @@
+import { useState, useRef } from "react";
+
 import BoxInput from "../common/BoxInput/BoxInput";
 
 //functions
-import useKey from '../helpers/useKey';
+import useKey from "../helpers/useKey";
+
+import { combinationSkills } from "../helpers/combinationSkill";
 
 //IMAGES
 import QuasIcon from "../images/quas_icon.png";
@@ -14,14 +18,48 @@ import InvokeIcon from "../images/invoke_icon.png";
 import "./SkillsSection.css";
 
 function SkillsSection() {
-  useKey(["KeyQ", "KeyW", "KeyE"], () => console.log('noob'));
+  const [currentSkillSet, setCurrentSKillSet] = useState([]);
+
+  const [currentInvokeSkill, setCurrentInvokeSkill] = useState([
+    BlankIcon,
+    BlankIcon,
+  ]);
+
+  useKey(["KeyQ", "KeyW", "KeyE"], (event) => {
+    setCurrentSKillSet((currentSkillSetArray) => [
+      ...(currentSkillSetArray.length === 3
+        ? currentSkillSetArray.slice(1, 3)
+        : currentSkillSetArray),
+      event.key,
+    ]);
+  });
+
+  const stateRef = useRef();
+
+  stateRef.current = currentSkillSet;
+
+  useKey(["KeyR"], () => {
+    const findCombinationSKillResult = combinationSkills.find(
+      ({ combination }) => combination.includes(stateRef.current.join(''))
+    );
+
+    console.log(findCombinationSKillResult)
+
+    if (findCombinationSKillResult) {
+      setCurrentInvokeSkill((updatedInvokeSkill) => [
+        findCombinationSKillResult.img,
+        updatedInvokeSkill[0],
+      ]);
+    }
+  });
+
   return (
     <div className="skillsSection">
       <BoxInput image={QuasIcon} hotkey="Q" />
       <BoxInput image={WexIcon} hotkey="W" />
       <BoxInput image={ExortIcon} hotkey="E" />
-      <BoxInput image={BlankIcon} hotkey="D" />
-      <BoxInput image={BlankIcon} hotkey="F" />
+      <BoxInput image={currentInvokeSkill[0]} hotkey="D" />
+      <BoxInput image={currentInvokeSkill[1]} hotkey="F" />
       <BoxInput image={InvokeIcon} hotkey="R" />
     </div>
   );
