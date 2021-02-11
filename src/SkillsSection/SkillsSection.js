@@ -34,24 +34,22 @@ function SkillsSection() {
     ]);
   });
 
-  const stateRef = useRef();
-
-  stateRef.current = currentSkillSet;
-
   useKey(["KeyR"], () => {
     const findCombinationSKillResult = combinationSkills.find(
-      ({ combination }) => combination.includes(stateRef.current.join(''))
+      ({ combination }) => combination.includes(stateRef.current[0].join(''))
     );
 
-    console.log(findCombinationSKillResult)
-
-    if (findCombinationSKillResult) {
+    if (findCombinationSKillResult && stateRef.current[1][0] !== findCombinationSKillResult.img) {
       setCurrentInvokeSkill((updatedInvokeSkill) => [
         findCombinationSKillResult.img,
         updatedInvokeSkill[0],
       ]);
     }
   });
+
+  const stateRef = useRef();
+
+  stateRef.current = [currentSkillSet, currentInvokeSkill];
 
   return (
     <div className="skillsSection">
