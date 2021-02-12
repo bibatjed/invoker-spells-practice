@@ -1,0 +1,13 @@
+.orb {
+    border:  black 0.5rem;
+    border-radius: 100%;
+    position: relative;
+    background-color: gray;
+    flex-basis: 10rem;
+  }
+  
+  
+  .orb__image {
+      width: 100%;
+  }
+  

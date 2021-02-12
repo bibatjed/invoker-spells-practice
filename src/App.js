@@ -5,6 +5,7 @@ import SkillsSection from "./SkillsSection/SkillsSection";
 
 //img
 import InvokerHero from "./images/floating_invoker.png";
+import Content from "./Content/Content";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <img src={InvokerHero}></img>
           </div>
         </div>
+        <Content/>
         <SkillsSection/>
       </div>
 
