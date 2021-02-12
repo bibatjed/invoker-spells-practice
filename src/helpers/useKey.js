@@ -5,6 +5,11 @@ function useKey(key = [], cb) {
   
     useEffect(() => {
       function handle(event) {
+        //prevent helding down registers a multiple key
+        if(event.repeat){
+          return;
+        }
+
         if (key.includes(event.code)) {
           callbackRef.current(event);
         }
