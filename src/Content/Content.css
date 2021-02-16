@@ -1,4 +1,52 @@
-.skillsSection {
+.Content .Content__Orb {
+  display: flex;
+  justify-content: center;
+}
+
+.Instructions {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.Instructions .Instructions__Title {
+    background-color: rgb(88, 86, 86);
+    display: inline-block;
+    width: 12rem;
+    padding: .3rem;
+    border: solid .2rem white;
+    border-bottom: none;
+    border-radius: 1rem;
+}
+
+
+.Instructions .Instructions__Title span{
+    font-size: 2rem;
+    color: white;
+}
+
+.Instructions .Instructions__SkillsQuest {
+    background-color: rgb(88, 86, 86);
+    display: inline-block;
+    width: 20rem;
+    height: 10rem;
+    padding: .3rem;
+    /* border: solid .2rem transparent; */
+    background: linear-gradient(to right, #05FBFF,#1E00FF);
+    border-radius: 1rem;
+    /* border-radius: 1rem; */
+}
+
+
+.Instructions .Instructions__SkillsQuest span{
+    font-size: 2rem;
+    /* color: white; */
+    display: inline-block;
+    border-radius: 1rem;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+}
+
+.Instructions .Instructions__SkillsQuest img{
+    width: 50%;
 }

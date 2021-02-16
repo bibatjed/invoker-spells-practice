@@ -2,7 +2,7 @@
   border: solid black 0.5rem;
   position: relative;
   background-color: gray;
-  flex-basis: 10rem;
+  flex-basis: 8rem;
 }
 
 .box__hotkey {
